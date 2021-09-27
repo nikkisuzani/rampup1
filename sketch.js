@@ -39,17 +39,17 @@ function draw()
   text("Welcome to Hummingbird Pollination! Try to fill up your health bar, but remember: hummingbirds don't like roses :)", 250, 25, 550, 50);
   fill('red')
   translate(600, 400);
-  placeFlower(rose);
+  placeFlower(flower);
   translate(-300, -150);
-  placeFlower(flower)
+  placeFlower(rose)
   translate(300, -300);
   placeFlower(lastOne);
   translate(100, 0);
-  placeFlower(rose);
+  placeFlower(lastOne);
   translate(30, -350);
   placeFlower(flower); 
   translate(-1000, -200)
-  placeFlower(lastOne)
+  placeFlower(rose)
   translate(-150, -50)
   placeFlower(rose)
   translate(380, -200)
@@ -61,10 +61,10 @@ function draw()
   translate(-325, -730)
   image(img, mouseX - 200, mouseY - 35, img.width / 1.75, img.height / 1.75);
   if (mouseY - 35 > 200){
-    if (mouseY - 35 > 300 && mouseX - 200 < 300)  {
-      health = min(health - 10, 0)
+    if (mouseY - 35 > 300 && mouseX - 200 < 250)  {
+      health = max(health - 10, 0)
     }
-    else {
+    if ((mouseX - 200 > 250) && pmouseX != mouseX) {
       health += 10
     }
   }
