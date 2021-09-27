@@ -34,9 +34,9 @@ function draw()
   rect(200, 0, 600, 100)
   fill(15, 178, 57)
   rect(0, 550, 1200, 350)
-  textSize(20)
+  textSize(19)
   fill(199, 21, 133)
-  text("Welcome to Hummingbird Pollination! Try to fill up your health bar, but remember: hummingbirds don't like roses :)", 250, 25, 550, 50);
+  text("Welcome to Hummingbird Pollination! Get to max health, but remember: hummingbirds move fast, and they don't like roses :)", 230, 25, 550, 50);
   fill('red')
   translate(600, 400);
   placeFlower(flower);
