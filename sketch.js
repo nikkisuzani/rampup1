@@ -2,6 +2,8 @@ var img;
 var k = 7/9;
 var l = 5 / 2;
 var m = 6 / 4;
+var health = 50;
+var maxHealth = 400;
  
 function preload()
 {
@@ -13,23 +15,71 @@ function setup()
 {
   // set canvas size
   createCanvas(1200, 800); 
+  roseButton = createButton('rose');
 }
  
 function draw() 
 {
+  // display image (img, x, y)
   background(173, 216, 230);
+  if (health < maxHealth) {
+    healthBar(health);
+  }
+  else {
+    textSize(20)
+    fill(255, 0, 0)
+    text("Congrats! The hummingbird's health is full <3! You did it!", 900, 50, 200, 200)
+  }
+  fill(220, 220, 220)
+  rect(200, 0, 600, 100)
   fill(15, 178, 57)
   rect(0, 550, 1200, 350)
- 
-  // display image (img, x, y)
-  image(img, 0, 0, img.width / 1.75, img.height / 1.75);
-
+  textSize(20)
+  fill(199, 21, 133)
+  text("Welcome to Hummingbird Pollination! Try to fill up your health bar, but remember: hummingbirds don't like roses :)", 250, 25, 550, 50);
+  fill('red')
   translate(600, 400);
   placeFlower(rose);
   translate(-300, -150);
   placeFlower(flower)
-  translate(400, -300);
+  translate(300, -300);
   placeFlower(lastOne);
+  translate(100, 0);
+  placeFlower(rose);
+  translate(30, -350);
+  placeFlower(flower); 
+  translate(-1000, -200)
+  placeFlower(lastOne)
+  translate(-150, -50)
+  placeFlower(rose)
+  translate(380, -200)
+  placeFlower(lastOne)
+  translate(150, -200)
+  placeFlower(flower)
+  translate(-600, -200)
+  placeFlower(rose)
+  translate(-325, -730)
+  image(img, mouseX - 200, mouseY - 35, img.width / 1.75, img.height / 1.75);
+  if (mouseY - 35 > 200){
+    if (mouseY - 35 > 300 && mouseX - 200 < 300)  {
+      health = min(health - 10, 0)
+    }
+    else {
+      health += 10
+    }
+  }
+}
+
+function healthBar(currentHealth) {
+  stroke(0);
+  strokeWeight(4);
+  noFill();
+  rect(900, 10, 200, 20);
+  noStroke();
+  fill(255, 0, 0);
+  rect(900, 10, map(currentHealth, 0, maxHealth, 0, 200), 20);
+  strokeWeight(1)
+  text("Health Bar", 900, 50)
 }
 
 function placeFlower(flower_type) {
